@@ -5,6 +5,7 @@ const mysql = require("mysql");
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
+      specPattern: "**/*.cy.js", // Use specPattern under the e2e property
       // Implement node event listeners here
       on("task", {
         // Create task
@@ -44,6 +45,21 @@ module.exports = defineConfig({
       },
     },
   },
+  videosFolder: "cypress/videos",
+  screenshotsFolder: "cypress/screenshots",
+
+  // Cypress Dashboard configuration
+  projectId: "z2d7pq",
+
+  record: true,
+
+  // Parallelization configuration
+  numTestsKeptInMemory: 5,
+
+  numTestsKeptInDisk: 20,
+
+  // Any additional configurations or plugins can be added here
+  parallel: true
 });
 
 function queryTestDb(query, config) {
