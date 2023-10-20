@@ -3,10 +3,10 @@ name: Cypress CI
 on:
   push:
     branches:
-      - main  # Set your main branch name here
+      - main
   pull_request:
     branches:
-      - main  # Set your main branch name here
+      - main
 
 jobs:
   build:
@@ -20,4 +20,4 @@ jobs:
       run: npm install
 
     - name: Run Cypress tests
-      run: npm run cy:run  # Assuming you have a script named "cy:run" in your package.json file to run Cypress tests headlessly
+      run: npm run cy:run
