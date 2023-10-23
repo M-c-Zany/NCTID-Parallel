@@ -49,7 +49,7 @@ module.exports = defineConfig({
   screenshotsFolder: "cypress/screenshots",
 
   // Cypress Dashboard configuration
-  projectId: "z2d7pq",
+  projectId: "wbetes",
 
   record: true,
 
