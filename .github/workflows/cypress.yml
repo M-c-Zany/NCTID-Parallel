@@ -1,4 +1,4 @@
-name: NCTID Visting all details pages and checking the Elemnts for visibility
+name: Cypress Tests
 
 on:
   push:
@@ -20,3 +20,16 @@ jobs:
       
       - name: Run Cypress tests
         run: npx cypress run
+      
+      - name: Save emptydata0.json as artifact
+        if: always()  # This ensures the artifact is uploaded even if previous steps fail
+        run: mv cypress/fixtures/emptydata0.json ${{ runner.workspace }}/emptydata0.json
+        shell: bash
+        working-directory: ${{ runner.workspace }}
+      
+      - name: Upload emptydata0.json as artifact
+        if: always()  # This ensures the artifact is uploaded even if previous steps fail
+        uses: actions/upload-artifact@v2
+        with:
+          name: emptydata
+          path: emptydata0.json
