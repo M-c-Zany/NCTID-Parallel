@@ -168,7 +168,7 @@ describe("Demo postgres", () => {
           allEmptyElements[nctId] = emptyElements;
 
           // Write the result to a JSON file after each visit is complete
-          cy.writeFile(`${Cypress.env("GITHUB_WORKSPACE")}/emptydata0.json`, allEmptyElements);
+          cy.writeFile("cypress/fixtures/emptydata0.json", allEmptyElements);
         });
       }).then(() => {
         // After all visits are complete, you can access the final result
