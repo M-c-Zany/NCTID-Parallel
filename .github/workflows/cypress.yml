@@ -3,30 +3,39 @@ name: Cypress Tests
 on:
   push:
     branches:
-      - main # Change this to the branch you want to run tests on
+      - main
   pull_request:
     branches:
-      - main # Change this to the branch you want to run tests on
+      - main
 
 jobs:
   cypress-tests:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
-      - name: Install dependencies
-        run: npm install
-      
-      - name: Run Cypress tests
-        run: npx cypress run
-      
+
+      - name: Install Node.js and dependencies
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install Cypress
+        run: npm install cypress
+
+      - name: Run Cypress tests and generate emptydata0.json
+        run: |
+          npx cypress run --headless
+          # Ensure the emptydata0.json file is generated in the expected path
+          mv cypress/fixtures/emptydata0.json emptydata0.json
+        working-directory: ${{ github.workspace }}
+
       - name: Save emptydata0.json as artifact
         if: always()  # This ensures the artifact is uploaded even if previous steps fail
-        run: mv cypress/fixtures/emptydata0.json ${{ runner.workspace }}/emptydata0.json
-        shell: bash
-        working-directory: ${{ runner.workspace }}
-      
+        run: mv emptydata0.json ${{ runner.workspace }}/emptydata0.json
+        working-directory: ${{ github.workspace }}
+
       - name: Upload emptydata0.json as artifact
         if: always()  # This ensures the artifact is uploaded even if previous steps fail
         uses: actions/upload-artifact@v2
