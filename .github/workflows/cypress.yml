@@ -1,23 +1,22 @@
-name: Cypress CI
+name: Cypress Tests
 
 on:
   push:
     branches:
-      - main
+      - main # Change this to the branch you want to run tests on
   pull_request:
     branches:
-      - main
+      - main # Change this to the branch you want to run tests on
 
 jobs:
-  build:
+  cypress-tests:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Run Cypress tests
-      run: npm run cy:run
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Run Cypress tests
+        run: npx cypress run
