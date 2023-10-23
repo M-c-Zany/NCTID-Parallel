@@ -1,35 +1,22 @@
-name: Your Workflow Name
+name: NCTID Visting all details pages and checking the Elemnts for visibility
 
 on:
   push:
     branches:
-      - main
+      - main # Change this to the branch you want to run tests on
+  pull_request:
+    branches:
+      - main # Change this to the branch you want to run tests on
 
 jobs:
-  run-tests:
+  cypress-tests:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-
+      
       - name: Install dependencies
         run: npm install
-
-      - name: Run Cypress tests and save artifact
-        run: |
-          npx cypress run --headless
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Upload emptydata0.json as artifact
-        if: always()  # This ensures the artifact is uploaded even if previous steps fail
-        uses: actions/upload-artifact@v2
-        with:
-          name: test-results
-          path: cypress/fixtures/emptydata0.json
+      
+      - name: Run Cypress tests
+        run: npx cypress run
