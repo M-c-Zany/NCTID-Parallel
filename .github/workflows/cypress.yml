@@ -24,3 +24,7 @@ jobs:
         run: |
           npx cypress install # This ensures Cypress is installed and up-to-date
           npx cypress run --config video=false # Disable video recording to save storage space
+
+      - name: Display emptydata0.json content
+        run: |
+          cat cypress/fixtures/emptydata0.json
