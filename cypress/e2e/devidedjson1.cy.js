@@ -132,7 +132,7 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
     // Initialize an object to store the empty elements for all NCTIDs
     const allEmptyElements = {};
 
-    cy.fixture("mysql.json").then((jsonData) => {
+    cy.fixture("mysql.json_0.json").then((jsonData) => {
       // Use Cypress.Promise.each to visit each URL in sequence
       Cypress.Promise.each(jsonData, (item) => {
         const nctId = item.post_title;
