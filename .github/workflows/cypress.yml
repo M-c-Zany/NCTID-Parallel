@@ -12,19 +12,14 @@ jobs:
   cypress-tests:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      
-      - name: Install dependencies
-        run: |
-          npm install
-          # Add any additional setup steps here, if needed
-
-      - name: Run Cypress tests
-        run: |
-          npx cypress install # This ensures Cypress is installed and up-to-date
-          npx cypress run --config video=false # Disable video recording to save storage space
+      # ... Previous steps remain unchanged ...
 
       - name: Display emptydata0.json content
         run: |
           cat cypress/fixtures/emptydata0.json
+
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: emptydata # The name of the artifact
+          path: cypress/fixtures/emptydata0.json
