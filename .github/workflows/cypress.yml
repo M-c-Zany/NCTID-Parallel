@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [ubuntu-latest] # You can add more operating systems if needed
+        step: [1, 2, 3, 4, 5]  # Number of steps you have
 
     steps:
       - name: Checkout code
