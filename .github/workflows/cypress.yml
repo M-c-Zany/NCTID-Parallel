@@ -11,6 +11,10 @@ on:
 jobs:
   cypress-tests:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        spec: ['devidedjson.cy.js', 'devidedjson1.cy.js'] # Add more spec files if needed
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -20,17 +24,17 @@ jobs:
           npm install
           # Add any additional setup steps here, if needed
 
-      - name: Find Cypress spec files
-        id: find-specs
-        run: |
-          echo "::set-output name=specs::$(find . -type f -name '*.spec.js' -o -name '*.spec.ts' -print0 | tr '\n' ',' | sed 's/,$//')"
-        shell: bash
-
       - name: Run Cypress tests
         run: |
           npx cypress install # This ensures Cypress is installed and up-to-date
-          for spec in $(echo "${{ steps.find-specs.outputs.specs }}" | tr "," "\n")
-          do
-            npx cypress run --spec "$spec" --config video=false &
-          done
-          wait
+          npx cypress run --spec "${{ matrix.spec }}" --config video=false
+
+      - name: Display spec results
+        run: |
+          cat cypress/results/results-${{ matrix.spec }}.json
+
+      - name: Archive spec artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: spec-results-${{ matrix.spec }}
+          path: cypress/results/results-${{ matrix.spec }}.json
