@@ -13,7 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        spec: ['devidedjson.cy.js', 'devidedjson1.cy.js'] # Add more spec files if needed
+        spec_file:
+          - "devidedjson.cy.js"
+          - "devidedjson1.cy.js"
+          # Add more spec files as needed
 
     steps:
       - name: Checkout code
@@ -27,14 +30,18 @@ jobs:
       - name: Run Cypress tests
         run: |
           npx cypress install # This ensures Cypress is installed and up-to-date
-          npx cypress run --spec "${{ matrix.spec }}" --config video=false
+          npx cypress run --spec "cypress/integration/${{ matrix.spec_file }}" --config video=false # Disable video recording to save storage space
 
-      - name: Display spec results
+      - name: Create emptydata.json file
         run: |
-          cat cypress/results/results-${{ matrix.spec }}.json
+          echo '{}' > cypress/fixtures/emptydata.json
 
-      - name: Archive spec artifacts
+      - name: Display emptydata.json content
+        run: |
+          cat cypress/fixtures/emptydata.json
+
+      - name: Archive artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: spec-results-${{ matrix.spec }}
-          path: cypress/results/results-${{ matrix.spec }}.json
+          name: emptydata # The name of the artifact
+          path: cypress/fixtures/emptydata.json
