@@ -1,22 +1,26 @@
+// Set task timeout and file path for data storage
 Cypress.config("taskTimeout", 9000000);
 const filePath = "cypress/fixtures/mysql.json";
 let res;
 
+// Describe the test suite
 describe("Fetching data from API and storing it in batch wise and checking elements in all detail pages", () => {
+  // Before each test, set up the environment by visiting the website and logging in
   beforeEach(() => {
     cy.viewport(1920, 1080);
     cy.visit("https://boldersciencestage.pixacore.com/");
-    //Enter password
+    // Enter password and click on Login
     cy.get("#password_protected_pass").type("BolderSc!ence");
-    //Click on Login
     cy.get("#wp-submit").click();
   });
 
+  // Test case: Fetch data from MySQL database and store it in JSON files in batches
   it("mysql data", () => {
-    Cypress.config("taskTimeout", 900000);
-    const batchSize = 1000; // Specify the size of each batch
-    const dataToWrite = []; // Array to accumulate the data
+    // Set the batch size and initialize an array to accumulate the data
+    const batchSize = 1000;
+    const dataToWrite = [];
 
+    // Fetch data from MySQL using a custom task
     cy.task(
       "queryDB",
       "SELECT post_title FROM bscience_posts INNER JOIN bscience_postmeta ON bscience_posts.ID = bscience_postmeta.post_id WHERE bscience_postmeta.meta_key = 'trial_status_change';"
@@ -29,7 +33,7 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
         dataToWrite.push(batch);
       }
 
-      // Write each batch to the JSON file
+      // Write each batch to a separate JSON file
       const writePromises = dataToWrite.map((batch, index) => {
         const batchFilePath = `${filePath}_${index}.json`;
         return cy
@@ -129,50 +133,53 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
       { selector: "#studyDet-more-information", name: "More Information" },
     ];
 
-    // Initialize an object to store the empty elements for all NCTIDs
+    // Initialize an object to store empty elements for all NCTIDs
     const allEmptyElements = {};
 
+    // Read data from a JSON file containing NCTIDs
     cy.fixture("mysql.json").then((jsonData) => {
-      // Use Cypress.Promise.each to visit each URL in sequence
+      // Visit each NCT ID's detail page and check specific elements
       Cypress.Promise.each(jsonData, (item) => {
         const nctId = item.post_title;
         const url = "https://boldersciencestage.pixacore.com/trial/" + nctId;
 
-        // Initialize an array to store the empty elements for this NCTID
+        // Initialize an array to store empty elements for this NCTID
         const emptyElements = [];
 
+        // Visit the URL and check elements
         return cy.visit(url, { failOnStatusCode: false }).then((response) => {
+          // Handle 500 Internal Server Error
           if (response.status === 500) {
             console.error(`Error: 500 Internal Server Error for URL: ${url}`);
           }
 
-          // Check the text for each selector
+          // Check each selector for empty elements
           cy.wrap(selectors).each((selectorItem) => {
-            // Use cy.get with should() to check for the element
             cy.get(selectorItem.selector, { timeout: 10000 })
               .should(($element) => {
                 const text = $element.text().trim();
+                // If element is empty, add its name to the emptyElements array
                 if (text === "") {
                   emptyElements.push(selectorItem.name);
                 }
               })
               .then(null, () => {
-                // Handle the case when the selector is not found by logging a message
+                // Handle selector not found error
                 console.error(
                   `Selector not found for NCTID ${nctId}: ${selectorItem.selector}`
                 );
               });
           });
 
-          // Add the array of empty elements for this NCTID to the allEmptyElements object
+          // Store empty elements for this NCTID in the allEmptyElements object
           allEmptyElements[nctId] = emptyElements;
 
           // Write the result to a JSON file after each visit is complete
           cy.writeFile("cypress/fixtures/emptydata0.json", allEmptyElements);
         });
       }).then(() => {
-        // After all visits are complete, you can access the final result
-        console.log(allEmptyElements); // Print the final result for further analysis
+        // After all visits are complete, print the final result for further analysis
+        console.log(allEmptyElements);
       });
     });
   });
