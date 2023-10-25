@@ -9,12 +9,8 @@ on:
       - main # Change this to the branch you want to run tests on
 
 jobs:
-  cypress-tests:
+  cypress-test-1:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        step: [1, 2, 3, 4, 5]  # Number of steps you have
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -24,17 +20,43 @@ jobs:
           npm install
           # Add any additional setup steps here, if needed
 
-      - name: Run Cypress tests
+      - name: Run Cypress spec 1
         run: |
           npx cypress install # This ensures Cypress is installed and up-to-date
-          npx cypress run --config video=false # Disable video recording to save storage space
+          npx cypress run --spec "path/to/your/spec1.js" --config video=false
 
-      - name: Display emptydata0.json content
+      - name: Display spec 1 results
         run: |
-          cat cypress/fixtures/emptydata0.json
+          cat path/to/your/spec1_results.json
 
-      - name: Archive artifacts
+      - name: Archive spec 1 artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: emptydata # The name of the artifact
-          path: cypress/fixtures/emptydata0.json
+          name: spec1-results
+          path: path/to/your/spec1_results.json
+
+  cypress-test-2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          npm install
+          # Add any additional setup steps here, if needed
+
+      - name: Run Cypress spec 2
+        run: |
+          npx cypress install # This ensures Cypress is installed and up-to-date
+          npx cypress run --spec "path/to/your/spec2.js" --config video=false
+
+      - name: Display spec 2 results
+        run: |
+          cat path/to/your/spec2_results.json
+
+      - name: Archive spec 2 artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: spec2-results
+          path: path/to/your/spec2_results.json
