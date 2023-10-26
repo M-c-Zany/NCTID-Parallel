@@ -136,15 +136,18 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
     // Initialize an object to store empty elements for all NCTIDs
     const allEmptyElements = {};
 
-    // Read data from a JSON file containing NCTIDs
-    cy.fixture("mysql.json").then((jsonData) => {
-      // Visit each NCT ID's detail page and check specific elements
-      Cypress.Promise.each(jsonData, (item) => {
-        const nctId = item.post_title;
-        const url = "https://boldersciencestage.pixacore.com/trial/" + nctId;
+  // Read data from a JSON file containing NCTIDs
+  cy.fixture("mysql.json").then((jsonData) => {
+    // Initialize an object to store empty elements for all NCTIDs
+    const allEmptyElements = {};
 
-        // Initialize an array to store empty elements for this NCTID
-        const emptyElements = [];
+    return Cypress.Promise.each(jsonData, (item) => {
+      const nctId = item.post_title;
+      const url = "https://boldersciencestage.pixacore.com/trial/" + nctId;
+
+      // Initialize an array to store empty elements for this NCTID
+      const emptyElements = [];
+
 
         // Visit the URL and check elements
         return cy.visit(url, { failOnStatusCode: false }).then((response) => {
@@ -172,14 +175,16 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
           });
 
           // Store empty elements for this NCTID in the allEmptyElements object
-          allEmptyElements[nctId] = emptyElements;
+        allEmptyElements[nctId] = emptyElements;
+      });
+    }).then(() => {
+      // Write the result to a separate JSON file for each NCT ID
+      Object.keys(allEmptyElements).forEach((nctId) => {
+        cy.writeFile(`cypress/fixtures/emptydata_${nctId}.json`, allEmptyElements[nctId]);
+      });
 
-          // Write the result to a JSON file after each visit is complete
-          cy.writeFile("cypress/fixtures/emptydata0.json", allEmptyElements);
-        });
-      }).then(() => {
-        // After all visits are complete, print the final result for further analysis
-        console.log(allEmptyElements);
+      // After all visits are complete, print the final result for further analysis
+      console.log(allEmptyElements);
       });
     });
   });

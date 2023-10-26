@@ -93,50 +93,58 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
       { selector: "#studyDet-more-information", name: "More Information" },
     ];
 
-    // Initialize an object to store the empty elements for all NCTIDs
+    // Initialize an object to store empty elements for all NCTIDs
     const allEmptyElements = {};
 
-    cy.fixture("mysql.json_0.json").then((jsonData) => {
-      // Use Cypress.Promise.each to visit each URL in sequence
-      Cypress.Promise.each(jsonData, (item) => {
-        const nctId = item.post_title;
-        const url = "https://boldersciencestage.pixacore.com/trial/" + nctId;
+  // Read data from a JSON file containing NCTIDs
+  cy.fixture("mysql.json_0.json").then((jsonData) => {
+    // Initialize an object to store empty elements for all NCTIDs
+    const allEmptyElements = {};
 
-        // Initialize an array to store the empty elements for this NCTID
-        const emptyElements = [];
+    return Cypress.Promise.each(jsonData, (item) => {
+      const nctId = item.post_title;
+      const url = "https://boldersciencestage.pixacore.com/trial/" + nctId;
 
+      // Initialize an array to store empty elements for this NCTID
+      const emptyElements = [];
+
+
+        // Visit the URL and check elements
         return cy.visit(url, { failOnStatusCode: false }).then((response) => {
+          // Handle 500 Internal Server Error
           if (response.status === 500) {
             console.error(`Error: 500 Internal Server Error for URL: ${url}`);
           }
 
-          // Check the text for each selector
+          // Check each selector for empty elements
           cy.wrap(selectors).each((selectorItem) => {
-            // Use cy.get with should() to check for the element
             cy.get(selectorItem.selector, { timeout: 10000 })
               .should(($element) => {
                 const text = $element.text().trim();
+                // If element is empty, add its name to the emptyElements array
                 if (text === "") {
                   emptyElements.push(selectorItem.name);
                 }
               })
               .then(null, () => {
-                // Handle the case when the selector is not found by logging a message
+                // Handle selector not found error
                 console.error(
                   `Selector not found for NCTID ${nctId}: ${selectorItem.selector}`
                 );
               });
           });
 
-          // Add the array of empty elements for this NCTID to the allEmptyElements object
-          allEmptyElements[nctId] = emptyElements;
+          // Store empty elements for this NCTID in the allEmptyElements object
+        allEmptyElements[nctId] = emptyElements;
+      });
+    }).then(() => {
+      // Write the result to a separate JSON file for each NCT ID
+      Object.keys(allEmptyElements).forEach((nctId) => {
+        cy.writeFile(`cypress/fixtures/emptydata_${nctId}.json`, allEmptyElements[nctId]);
+      });
 
-          // Write the result to a JSON file after each visit is complete
-          cy.writeFile("cypress/fixtures/emptydata1.json", allEmptyElements);
-        });
-      }).then(() => {
-        // After all visits are complete, you can access the final result
-        console.log(allEmptyElements); // Print the final result for further analysis
+      // After all visits are complete, print the final result for further analysis
+      console.log(allEmptyElements);
       });
     });
   });
