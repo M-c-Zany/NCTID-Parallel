@@ -12,8 +12,8 @@ jobs:
     strategy:
       matrix:
         spec_file:
-          - "spec1.cy.js"
-          - "spec2.cy.js"
+          - "devidedjson.cy.js"
+          
           # Add more spec files as needed
 
     steps:
