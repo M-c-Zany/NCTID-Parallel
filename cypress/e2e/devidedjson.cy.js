@@ -136,17 +136,17 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
     // Initialize an object to store empty elements for all NCTIDs
     const allEmptyElements = {};
 
-  // Read data from a JSON file containing NCTIDs
-  cy.fixture("mysql.json").then((jsonData) => {
-    // Initialize an object to store empty elements for all NCTIDs
-    const allEmptyElements = {};
+    // Read data from a JSON file containing NCTIDs
+    cy.fixture("mysql.json").then((jsonData) => {
+      // Initialize an object to store empty elements for all NCTIDs
+      const allEmptyElements = {};
 
-    return Cypress.Promise.each(jsonData, (item) => {
-      const nctId = item.post_title;
-      const url = "https://boldersciencestage.pixacore.com/trial/" + nctId;
+      return Cypress.Promise.each(jsonData, (item) => {
+        const nctId = item.post_title;
+        const url = "https://boldersciencestage.pixacore.com/trial/" + nctId;
 
-      // Initialize an array to store empty elements for this NCTID
-      const emptyElements = [];
+        // Initialize an array to store empty elements for this NCTID
+        const emptyElements = [];
 
 
         // Visit the URL and check elements
@@ -177,8 +177,12 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
           // Store empty elements for this NCTID in the allEmptyElements object
           allEmptyElements[nctId] = emptyElements;
 
-          // Write the result to a JSON file after each visit is complete
-          cy.writeFile("cypress/fixtures/missing_elements0.json", allEmptyElements);
+          // Write empty elements for each NCTID to a separate JSON file
+          const nctId = item.post_title;
+          const emptyElementsFilePath = `cypress/fixtures/missing_elements_${nctId}.json`;
+          cy.writeFile(emptyElementsFilePath, JSON.stringify(emptyElements)).then(() => {
+            console.log(`Empty elements for NCTID ${nctId} written to: ${emptyElementsFilePath}`);
+          });
         });
       }).then(() => {
         // After all visits are complete, print the final result for further analysis
