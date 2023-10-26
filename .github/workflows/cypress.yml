@@ -36,6 +36,9 @@ jobs:
           echo '{}' > $empty_json_file
           echo "Empty JSON file created: $empty_json_file"
 
+          # Report to Cypress Dashboard
+          npx cypress run --spec "cypress/e2e/${{ matrix.spec_file }}" --record --key fede15fc-970a-4cb4-a077-518573466e27
+
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
         with:
