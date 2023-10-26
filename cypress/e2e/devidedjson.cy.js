@@ -174,10 +174,8 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
           // Store empty elements for this NCTID in the allEmptyElements object
           allEmptyElements[nctId] = emptyElements;
 
-          cy.writeToEmptyJSON(`cypress/fixtures/emptydata_${spec_file_name}.json`, allEmptyElements).then(() => {
-            // After writing data to the file, log a message or perform other actions if needed
-            console.log(`Data written to empty JSON file: emptydata_${spec_file_name}.json`);
-        });
+          // Write the result to a JSON file after each visit is complete
+          cy.writeFile("cypress/fixtures/emptydata0.json", allEmptyElements);
         });
       }).then(() => {
         // After all visits are complete, print the final result for further analysis
