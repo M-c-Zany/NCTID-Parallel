@@ -48,7 +48,7 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
     });
   });
 
-  it("visit nct ID data", () => {
+  it.only("visit nct ID data", () => {
     const selectors = [
       {
         selector:
