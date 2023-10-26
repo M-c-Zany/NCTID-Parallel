@@ -1,10 +1,10 @@
 on:
   push:
     branches:
-      - main # Change this to the branch you want to run tests on
+      - main
   pull_request:
     branches:
-      - main # Change this to the branch you want to run tests on
+      - main
 
 jobs:
   cypress-tests:
@@ -12,7 +12,8 @@ jobs:
     strategy:
       matrix:
         spec_file:
-          - "devidedjson.cy.js"
+          - "spec1.cy.js"
+          - "spec2.cy.js"
           # Add more spec files as needed
 
     steps:
@@ -22,24 +23,22 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
-          # Add any additional setup steps here, if needed
+          npx cypress install
 
-      - name: Run Cypress tests and create empty JSON file
+      - name: Run Cypress tests and save results to JSON file
         run: |
-          npx cypress install # This ensures Cypress is installed and up-to-date
           npx cypress run --spec "cypress/e2e/${{ matrix.spec_file }}" --config video=false
-
-          # Create empty JSON file based on spec file name
           spec_file_name=$(basename "${{ matrix.spec_file }}" .cy.js)
-          empty_json_file="cypress/fixtures/emptydata_${spec_file_name}.json"
-          echo '{}' > $empty_json_file
-          echo "Empty JSON file created: $empty_json_file"
+          missing_elements_file="cypress/fixtures/missing_elements_${spec_file_name}.json"
 
-          # Report to Cypress Dashboard
-          npx cypress run --spec "cypress/e2e/${{ matrix.spec_file }}" --record --key fede15fc-970a-4cb4-a077-518573466e27
+          # Run your Cypress test and save results to the specific missing elements file
+          npx cypress run --spec "cypress/e2e/${{ matrix.spec_file }}" --config video=false --env configFile=$missing_elements_file
 
-      - name: Archive artifacts
+      - name: Upload Cypress test results
         uses: actions/upload-artifact@v2
         with:
-          name: emptydata # The name of the artifact
-          path: cypress/fixtures/emptydata_*.json
+          name: cypress-results
+          path: |
+            cypress/videos
+            cypress/screenshots
+            cypress/fixtures/missing_elements_*.json
