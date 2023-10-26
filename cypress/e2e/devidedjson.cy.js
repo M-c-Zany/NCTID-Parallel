@@ -178,7 +178,7 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
             // After writing data to the file, log a message or perform other actions if needed
             console.log(`Data written to empty JSON file: emptydata_${spec_file_name}.json`);
         });
-      });
+        });
       }).then(() => {
         // After all visits are complete, print the final result for further analysis
         console.log(allEmptyElements);
