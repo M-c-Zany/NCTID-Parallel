@@ -175,16 +175,14 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
           });
 
           // Store empty elements for this NCTID in the allEmptyElements object
-        allEmptyElements[nctId] = emptyElements;
-      });
-    }).then(() => {
-      // Write the result to a separate JSON file for each NCT ID
-      Object.keys(allEmptyElements).forEach((nctId) => {
-        cy.writeFile(`cypress/fixtures/emptydata_${nctId}.json`, allEmptyElements[nctId]);
-      });
+          allEmptyElements[nctId] = emptyElements;
 
-      // After all visits are complete, print the final result for further analysis
-      console.log(allEmptyElements);
+          // Write the result to a JSON file after each visit is complete
+          cy.writeFile("cypress/fixtures/missing_elements0.json", allEmptyElements);
+        });
+      }).then(() => {
+        // After all visits are complete, print the final result for further analysis
+        console.log(allEmptyElements);
       });
     });
   });
