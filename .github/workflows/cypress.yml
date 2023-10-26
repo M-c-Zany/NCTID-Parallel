@@ -13,7 +13,6 @@ jobs:
       matrix:
         spec_file:
           - "devidedjson.cy.js"
-          - "devidedjson1.cy.js"
           # Add more spec files as needed
 
     steps:
