@@ -1,3 +1,5 @@
+name: Cypress Tests
+
 on:
   push:
     branches:
@@ -9,6 +11,11 @@ on:
 jobs:
   cypress-tests:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        spec: ["path/to/spec1.js", "path/to/spec2.js"]  # Add more spec paths if needed
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -21,14 +28,13 @@ jobs:
       - name: Run Cypress tests
         run: |
           npx cypress install # This ensures Cypress is installed and up-to-date
-          npx cypress run --config video=false # Disable video recording to save storage space
-
-      - name: Display emptydata0.json content
-        run: |
-          cat cypress/fixtures/emptydata0.json
+          npx cypress run --spec ${{ matrix.spec }} --config video=false # Disable video recording to save storage space
 
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: emptydata # The name of the artifact
-          path: cypress/fixtures/emptydata0.json
+          name: cypress-results # The name of the artifact
+          path: |
+            cypress/screenshots
+            cypress/videos
+            cypress/fixtures/missing_elements.json
