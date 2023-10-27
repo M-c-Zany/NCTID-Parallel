@@ -24,19 +24,14 @@ jobs:
         run: |
           npm install
           # Add any additional setup steps here, if needed
-      - name: Run Cypress tests and create empty JSON file
+
+      - name: Run Cypress tests
         run: |
           npx cypress install # This ensures Cypress is installed and up-to-date
-          npx cypress run --spec "cypress/e2e/${{ matrix.spec_file }}" --config video=false
-          # Create empty JSON file based on spec file name
-          spec_file_name=$(basename "${{ matrix.spec_file }}" .cy.js)
-          empty_json_file="cypress/fixtures/emptydata_${spec_file_name}.json"
-          echo '{}' > $empty_json_file
-          echo "Empty JSON file created: $empty_json_file"
-          # Report to Cypress Dashboard
-          npx cypress run --spec "cypress/e2e/${{ matrix.spec_file }}" --record --key fede15fc-970a-4cb4-a077-518573466e27
+          npx cypress run --spec "cypress/e2e/${{ matrix.spec_file }}" --config video=false --record --key fede15fc-970a-4cb4-a077-518573466e27
+
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: emptydata # The name of the artifact
-          path: cypress/fixtures/emptydata_*.json
+          name: cypress-results # The name of the artifact
+          path: cypress/videos, cypress/screenshots
