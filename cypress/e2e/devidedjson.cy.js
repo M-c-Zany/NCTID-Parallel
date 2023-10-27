@@ -48,7 +48,7 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
     });
   });
 
-  it("visit nct ID data", () => {
+  it.only("visit nct ID data", () => {
     const selectors = [
       {
         selector:
@@ -168,7 +168,7 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
           allEmptyElements[nctId] = emptyElements;
 
           // Write the result to a JSON file after each visit is complete
-          cy.writeFile("cypress/fixtures/emptydata0.json", allEmptyElements);
+          cy.writeFile("cypress/fixtures/missing_elements.json", allEmptyElements);
         });
       }).then(() => {
         // After all visits are complete, you can access the final result
