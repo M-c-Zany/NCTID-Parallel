@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        spec: ["path/to/spec1.js", "path/to/spec2.js"]  # Add more spec paths if needed
+        spec: ["cypress/e2e/devidedjson.cy.js", "cypress/e2e/devidedjson1.cy.js"]  # Add more spec paths if needed
 
     steps:
       - name: Checkout code
