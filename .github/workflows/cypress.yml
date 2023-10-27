@@ -1,10 +1,10 @@
 on:
   push:
     branches:
-      - main # Change this to the branch you want to run tests on
+      - main
   pull_request:
     branches:
-      - main # Change this to the branch you want to run tests on
+      - main
 
 jobs:
   cypress-tests:
@@ -14,7 +14,8 @@ jobs:
         spec_file:
           - "devidedjson.cy.js"
           - "devidedjson1.cy.js"
-          # Add more spec files as needed
+          - "devidedjson2.cy.js"
+          - "devidedjson3.cy.js"
 
     steps:
       - name: Checkout code
@@ -33,5 +34,11 @@ jobs:
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: cypress-results # The name of the artifact
-          path: cypress/videos, cypress/screenshots
+          name: cypress-results
+          path: |
+            cypress/videos
+            cypress/screenshots
+            cypress/fixtures/missing_elements.json
+            cypress/fixtures/missing_elements1.json
+            cypress/fixtures/missing_elements2.json
+            cypress/fixtures/missing_elements3.json
