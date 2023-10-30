@@ -14,7 +14,7 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
 
   it("mysql data", () => {
     Cypress.config("taskTimeout", 900000);
-    const batchSize = 1000; // Specify the size of each batch
+    const batchSize = 150; // Specify the size of each batch
     const dataToWrite = []; // Array to accumulate the data
 
     cy.task(
