@@ -13,6 +13,7 @@ jobs:
       matrix:
         spec_file:
           - "01.cy.js"
+          - "02.cy.js"
 
 
 
@@ -38,5 +39,22 @@ jobs:
             cypress/videos
             cypress/screenshots
             cypress/fixtures/missing_elements1.json
+            cypress/fixtures/missing_elements2.json
+            cypress/fixtures/missing_elements3.json
+            cypress/fixtures/missing_elements4.json
+            cypress/fixtures/missing_elements5.json
+            cypress/fixtures/missing_elements6.json
+            cypress/fixtures/missing_elements7.json
+            cypress/fixtures/missing_elements8.json
+            cypress/fixtures/missing_elements9.json
+            cypress/fixtures/missing_elements10.json
+            cypress/fixtures/missing_elements11.json
+            cypress/fixtures/missing_elements12.json
+            cypress/fixtures/missing_elements13.json
+            cypress/fixtures/missing_elements14.json
+            cypress/fixtures/missing_elements15.json
+            cypress/fixtures/missing_elements16.json
+            cypress/fixtures/missing_elements17.json
+
       
           
