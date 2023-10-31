@@ -42,7 +42,7 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
     // Initialize an object to store the empty elements for all NCTIDs
     const allEmptyElements = {};
 
-    cy.fixture("mysql.json_144.json").then((jsonData) => {
+    cy.fixture("mysql.json_344.json").then((jsonData) => {
       // Use Cypress.Promise.each to visit each URL in sequence
       Cypress.Promise.each(jsonData, (item) => {
         const nctId = item.post_title;
@@ -78,7 +78,7 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
           allEmptyElements[nctId] = emptyElements;
 
           // Write the result to a JSON file after each visit is complete
-          cy.writeFile("cypress/fixtures/missing_elements144.json", allEmptyElements);
+          cy.writeFile("cypress/fixtures/missing_elements344.json", allEmptyElements);
         });
       }).then(() => {
         // After all visits are complete, you can access the final result
@@ -128,7 +128,7 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
     // Initialize an object to store the empty elements for all NCTIDs
     const allEmptyElements = {};
 
-    cy.fixture("mysql.json_145.json").then((jsonData) => {
+    cy.fixture("mysql.json_345.json").then((jsonData) => {
       // Use Cypress.Promise.each to visit each URL in sequence
       Cypress.Promise.each(jsonData, (item) => {
         const nctId = item.post_title;
@@ -164,7 +164,7 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
           allEmptyElements[nctId] = emptyElements;
 
           // Write the result to a JSON file after each visit is complete
-          cy.writeFile("cypress/fixtures/missing_elements145.json", allEmptyElements);
+          cy.writeFile("cypress/fixtures/missing_elements345.json", allEmptyElements);
         });
       }).then(() => {
         // After all visits are complete, you can access the final result
