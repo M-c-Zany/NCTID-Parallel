@@ -14,6 +14,14 @@ jobs:
         spec_file:
           - "01.cy.js"
           - "02.cy.js"
+          - "03.cy.js"
+          - "04.cy.js"
+          - "05.cy.js"
+          - "06.cy.js"
+          - "07.cy.js"
+          - "08.cy.js"
+          - "09.cy.js"
+          - "10.cy.js"
 
 
 
@@ -38,6 +46,7 @@ jobs:
           path: |
             cypress/videos
             cypress/screenshots
+            cypress/fixtures/missing_elements0.json
             cypress/fixtures/missing_elements1.json
             cypress/fixtures/missing_elements2.json
             cypress/fixtures/missing_elements3.json
@@ -55,6 +64,8 @@ jobs:
             cypress/fixtures/missing_elements15.json
             cypress/fixtures/missing_elements16.json
             cypress/fixtures/missing_elements17.json
+            cypress/fixtures/missing_elements18.json
+            cypress/fixtures/missing_elements19.json
 
       
           
