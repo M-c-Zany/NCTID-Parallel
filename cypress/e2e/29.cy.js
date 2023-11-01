@@ -1,6 +1,15 @@
 Cypress.config("taskTimeout", 9000000);
 const filePath = "cypress/fixtures/mysql.json";
 let res;
+const filePaths = {
+  dataFile1: "mysql.json_458.json",
+  dataFile2: "mysql.json_459.json"
+};
+
+const missing_elements = {
+  missing1: "cypress/fixtures/missing_elements458.json",
+  missing2: "cypress/fixtures/missing_elements459.json"
+};
 
 describe("Fetching data from API and storing it in batch wise and checking elements in all detail pages", () => {
   beforeEach(() => {
@@ -42,7 +51,7 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
     // Initialize an object to store the empty elements for all NCTIDs
     const allEmptyElements = {};
 
-    cy.fixture("mysql.json_376.json").then((jsonData) => {
+    cy.fixture(filePaths.dataFile1).then((jsonData) => {
       // Use Cypress.Promise.each to visit each URL in sequence
       Cypress.Promise.each(jsonData, (item) => {
         const nctId = item.post_title;
@@ -78,7 +87,7 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
           allEmptyElements[nctId] = emptyElements;
 
           // Write the result to a JSON file after each visit is complete
-          cy.writeFile("cypress/fixtures/missing_elements376.json", allEmptyElements);
+          cy.writeFile(missing_elements.missing1, allEmptyElements);
         });
       }).then(() => {
         // After all visits are complete, you can access the final result
@@ -128,7 +137,7 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
     // Initialize an object to store the empty elements for all NCTIDs
     const allEmptyElements = {};
 
-    cy.fixture("mysql.json_377.json").then((jsonData) => {
+    cy.fixture(filePaths.dataFile2).then((jsonData) => {
       // Use Cypress.Promise.each to visit each URL in sequence
       Cypress.Promise.each(jsonData, (item) => {
         const nctId = item.post_title;
@@ -164,7 +173,7 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
           allEmptyElements[nctId] = emptyElements;
 
           // Write the result to a JSON file after each visit is complete
-          cy.writeFile("cypress/fixtures/missing_elements377.json", allEmptyElements);
+          cy.writeFile(missing_elements.missing2, allEmptyElements);
         });
       }).then(() => {
         // After all visits are complete, you can access the final result
