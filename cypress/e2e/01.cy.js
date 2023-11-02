@@ -2,13 +2,13 @@ Cypress.config("taskTimeout", 9000000);
 const filePath = "cypress/fixtures/mysql.json";
 let res;
 const filePaths = {
-  dataFile1: "mysql.json_402.json",
-  dataFile2: "mysql.json_403.json"
+  dataFile1: "mysql.json_603.json",
+  dataFile2: "mysql.json_604.json"
 };
 
 const missing_elements = {
-  missing1: "cypress/fixtures/missing_elements402.json",
-  missing2: "cypress/fixtures/missing_elements403.json"
+  missing1: "cypress/fixtures/missing_elements603.json",
+  missing2: "cypress/fixtures/missing_elements604.json"
 };
 
 describe("Fetching data from API and storing it in batch wise and checking elements in all detail pages", () => {
@@ -20,6 +20,7 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
     //Click on Login
     cy.get("#wp-submit").click();
   });
+  
 
   it("visit nct ID data", () => {
     const selectors = [
