@@ -121,7 +121,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v3
 
       - name: Install dependencies
         run: |
@@ -136,7 +136,7 @@ jobs:
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: cypress-results
+          name: 150k-180k
           path: |
             cypress/videos
             cypress/screenshots
