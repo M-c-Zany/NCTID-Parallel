@@ -14,6 +14,105 @@ jobs:
         spec_file:
           - "01.cy.js"
           - "02.cy.js"
+          - "03.cy.js"
+          - "04.cy.js"
+          - "05.cy.js"
+          - "06.cy.js"
+          - "07.cy.js"
+          - "08.cy.js"
+          - "09.cy.js"
+          - "10.cy.js"
+          - "11.cy.js"
+          - "12.cy.js"
+          - "13.cy.js"
+          - "14.cy.js"
+          - "15.cy.js"
+          - "16.cy.js"
+          - "17.cy.js"
+          - "18.cy.js"
+          - "19.cy.js"
+          - "20.cy.js"
+          - "21.cy.js"
+          - "22.cy.js"
+          - "23.cy.js"
+          - "24.cy.js"
+          - "25.cy.js"
+          - "26.cy.js"
+          - "27.cy.js"
+          - "28.cy.js"
+          - "29.cy.js"
+          - "30.cy.js"
+          - "31.cy.js"
+          - "32.cy.js"
+          - "33.cy.js"
+          - "34.cy.js"
+          - "35.cy.js"
+          - "36.cy.js"
+          - "37.cy.js"
+          - "38.cy.js"
+          - "39.cy.js"
+          - "40.cy.js"
+          - "41.cy.js"
+          - "42.cy.js"
+          - "43.cy.js"
+          - "44.cy.js"
+          - "45.cy.js"
+          - "46.cy.js"
+          - "47.cy.js"
+          - "48.cy.js"
+          - "49.cy.js"
+          - "50.cy.js"
+          - "51.cy.js"
+          - "52.cy.js"
+          - "53.cy.js"
+          - "54.cy.js"
+          - "55.cy.js"
+          - "56.cy.js"
+          - "57.cy.js"
+          - "58.cy.js"
+          - "59.cy.js"
+          - "60.cy.js"
+          - "61.cy.js"
+          - "62.cy.js"
+          - "63.cy.js"
+          - "64.cy.js"
+          - "65.cy.js"
+          - "66.cy.js"
+          - "67.cy.js"
+          - "68.cy.js"
+          - "69.cy.js"
+          - "70.cy.js"
+          - "71.cy.js"
+          - "72.cy.js"
+          - "73.cy.js"
+          - "74.cy.js"
+          - "75.cy.js"
+          - "76.cy.js"
+          - "77.cy.js"
+          - "78.cy.js"
+          - "79.cy.js"
+          - "80.cy.js"
+          - "81.cy.js"
+          - "82.cy.js"
+          - "83.cy.js"
+          - "84.cy.js"
+          - "85.cy.js"
+          - "86.cy.js"
+          - "87.cy.js"
+          - "88.cy.js"
+          - "89.cy.js"
+          - "90.cy.js"
+          - "91.cy.js"
+          - "92.cy.js"
+          - "93.cy.js"
+          - "94.cy.js"
+          - "95.cy.js"
+          - "96.cy.js"
+          - "97.cy.js"
+          - "98.cy.js"
+          - "99.cy.js"
+          - "100.cy.js"
+
         
           
         
@@ -41,11 +140,124 @@ jobs:
           path: |
             cypress/videos
             cypress/screenshots
-            cypress/fixtures/missing_elements803.json
-            cypress/fixtures/missing_elements804.json
-            cypress/fixtures/missing_elements805.json
-            cypress/fixtures/missing_elements806.json
-            cypress/fixtures/missing_elements807.json
-            cypress/fixtures/missing_elements808.json
-            cypress/fixtures/missing_elements809.json
-            cypress/fixtures/missing_elements810.json
+            cypress/fixtures/missing_elements1003.json
+            cypress/fixtures/missing_elements1004.json
+            cypress/fixtures/missing_elements1005.json
+            cypress/fixtures/missing_elements1006.json
+            cypress/fixtures/missing_elements1007.json
+            cypress/fixtures/missing_elements1008.json
+            cypress/fixtures/missing_elements1009.json
+            cypress/fixtures/missing_elements1010.json
+            cypress/fixtures/missing_elements1011.json
+            cypress/fixtures/missing_elements1012.json
+            cypress/fixtures/missing_elements1013.json
+            cypress/fixtures/missing_elements1014.json
+            cypress/fixtures/missing_elements1015.json
+            cypress/fixtures/missing_elements1016.json
+            cypress/fixtures/missing_elements1017.json
+            cypress/fixtures/missing_elements1018.json
+            cypress/fixtures/missing_elements1019.json
+            cypress/fixtures/missing_elements1020.json
+            cypress/fixtures/missing_elements1021.json
+            cypress/fixtures/missing_elements1022.json
+            cypress/fixtures/missing_elements1023.json
+            cypress/fixtures/missing_elements1024.json
+            cypress/fixtures/missing_elements1025.json
+            cypress/fixtures/missing_elements1026.json
+            cypress/fixtures/missing_elements1027.json
+            cypress/fixtures/missing_elements1028.json
+            cypress/fixtures/missing_elements1029.json
+            cypress/fixtures/missing_elements1030.json
+            cypress/fixtures/missing_elements1031.json
+            cypress/fixtures/missing_elements1032.json
+            cypress/fixtures/missing_elements1033.json
+            cypress/fixtures/missing_elements1034.json
+            cypress/fixtures/missing_elements1035.json
+            cypress/fixtures/missing_elements1036.json
+            cypress/fixtures/missing_elements1037.json
+            cypress/fixtures/missing_elements1038.json
+            cypress/fixtures/missing_elements1039.json
+            cypress/fixtures/missing_elements1040.json
+            cypress/fixtures/missing_elements1041.json
+            cypress/fixtures/missing_elements1042.json
+            cypress/fixtures/missing_elements1043.json
+            cypress/fixtures/missing_elements1044.json
+            cypress/fixtures/missing_elements1045.json
+            cypress/fixtures/missing_elements1046.json
+            cypress/fixtures/missing_elements1047.json
+            cypress/fixtures/missing_elements1048.json
+            cypress/fixtures/missing_elements1049.json
+            cypress/fixtures/missing_elements1050.json
+            cypress/fixtures/missing_elements1051.json
+            cypress/fixtures/missing_elements1052.json
+            cypress/fixtures/missing_elements1053.json
+            cypress/fixtures/missing_elements1054.json
+            cypress/fixtures/missing_elements1055.json
+            cypress/fixtures/missing_elements1056.json
+            cypress/fixtures/missing_elements1057.json
+            cypress/fixtures/missing_elements1058.json
+            cypress/fixtures/missing_elements1059.json
+            cypress/fixtures/missing_elements1060.json
+            cypress/fixtures/missing_elements1061.json
+            cypress/fixtures/missing_elements1062.json
+            cypress/fixtures/missing_elements1063.json
+            cypress/fixtures/missing_elements1064.json
+            cypress/fixtures/missing_elements1065.json
+            cypress/fixtures/missing_elements1066.json
+            cypress/fixtures/missing_elements1067.json
+            cypress/fixtures/missing_elements1068.json
+            cypress/fixtures/missing_elements1069.json
+            cypress/fixtures/missing_elements1070.json
+            cypress/fixtures/missing_elements1071.json
+            cypress/fixtures/missing_elements1072.json
+            cypress/fixtures/missing_elements1073.json
+            cypress/fixtures/missing_elements1074.json
+            cypress/fixtures/missing_elements1075.json
+            cypress/fixtures/missing_elements1076.json
+            cypress/fixtures/missing_elements1077.json
+            cypress/fixtures/missing_elements1078.json
+            cypress/fixtures/missing_elements1079.json
+            cypress/fixtures/missing_elements1080.json
+            cypress/fixtures/missing_elements1081.json
+            cypress/fixtures/missing_elements1082.json
+            cypress/fixtures/missing_elements1083.json
+            cypress/fixtures/missing_elements1084.json
+            cypress/fixtures/missing_elements1085.json
+            cypress/fixtures/missing_elements1086.json
+            cypress/fixtures/missing_elements1087.json
+            cypress/fixtures/missing_elements1088.json
+            cypress/fixtures/missing_elements1089.json
+            cypress/fixtures/missing_elements1090.json
+            cypress/fixtures/missing_elements1091.json
+            cypress/fixtures/missing_elements1092.json
+            cypress/fixtures/missing_elements1093.json
+            cypress/fixtures/missing_elements1094.json
+            cypress/fixtures/missing_elements1095.json
+            cypress/fixtures/missing_elements1096.json
+            cypress/fixtures/missing_elements1097.json
+            cypress/fixtures/missing_elements1098.json
+            cypress/fixtures/missing_elements1099.json
+            cypress/fixtures/missing_elements1100.json
+            cypress/fixtures/missing_elements1101.json
+            cypress/fixtures/missing_elements1102.json
+            cypress/fixtures/missing_elements1103.json
+            cypress/fixtures/missing_elements1104.json
+            cypress/fixtures/missing_elements1105.json
+            cypress/fixtures/missing_elements1106.json
+            cypress/fixtures/missing_elements1107.json
+            cypress/fixtures/missing_elements1108.json
+            cypress/fixtures/missing_elements1109.json
+            cypress/fixtures/missing_elements1110.json
+            cypress/fixtures/missing_elements1111.json
+            cypress/fixtures/missing_elements1112.json
+            cypress/fixtures/missing_elements1113.json
+            cypress/fixtures/missing_elements1114.json
+            cypress/fixtures/missing_elements1115.json
+            cypress/fixtures/missing_elements1116.json
+            cypress/fixtures/missing_elements1117.json
+            cypress/fixtures/missing_elements1118.json
+            cypress/fixtures/missing_elements1119.json
+            cypress/fixtures/missing_elements1120.json
+            cypress/fixtures/missing_elements1121.json
+            cypress/fixtures/missing_elements1122.json
+
