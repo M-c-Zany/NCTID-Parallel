@@ -259,5 +259,5 @@ jobs:
             cypress/fixtures/missing_elements1119.json
             cypress/fixtures/missing_elements1120.json
             cypress/fixtures/missing_elements1121.json
-            cypress/fixtures/missing_elements1122.json
+            
 
