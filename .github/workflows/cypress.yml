@@ -113,15 +113,9 @@ jobs:
           - "99.cy.js"
           - "100.cy.js"
 
-        
-          
-        
-
-
-
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v1
 
       - name: Install dependencies
         run: |
@@ -259,5 +253,5 @@ jobs:
             cypress/fixtures/missing_elements1119.json
             cypress/fixtures/missing_elements1120.json
             cypress/fixtures/missing_elements1121.json
-            
+            cypress/fixtures/missing_elements1122.json
 
