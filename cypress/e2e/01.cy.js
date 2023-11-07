@@ -7,8 +7,8 @@ const filePaths = {
 };
 
 const missing_elements = {
-  missing1: "cypress/fixtures/missing_elements1203.json",
-  missing2: "cypress/fixtures/missing_elements1204.json",
+  missing1: "cypress/fixtures/missing_elements1003.json",
+  missing2: "cypress/fixtures/missing_elements1004.json",
 };
 
 describe("Fetching data from API and storing it in batch wise and checking elements in all detail pages", () => {
