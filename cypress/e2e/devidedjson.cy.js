@@ -3,18 +3,18 @@ const filePath = "cypress/fixtures/mysql.json";
 let res;
 
 describe("Fetching data from API and storing it in batch wise and checking elements in all detail pages", () => {
-  beforeEach(() => {
-    cy.viewport(1920, 1080);
-    cy.visit("https://boldersciencestage.pixacore.com/");
-    //Enter password
-    cy.get("#password_protected_pass").type("BolderSc!ence");
-    //Click on Login
-    cy.get("#wp-submit").click();
-  });
+  // beforeEach(() => {
+  //   cy.viewport(1920, 1080);
+  //   cy.visit("https://boldersciencestage.pixacore.com/");
+  //   //Enter password
+  //   cy.get("#password_protected_pass").type("BolderSc!ence");
+  //   //Click on Login
+  //   cy.get("#wp-submit").click();
+  // });
 
   it("mysql data", () => {
     Cypress.config("taskTimeout", 900000);
-    const batchSize = 150; // Specify the size of each batch
+    const batchSize = 180; // Specify the size of each batch
     const dataToWrite = []; // Array to accumulate the data
 
     cy.task(
