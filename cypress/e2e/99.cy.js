@@ -10,6 +10,7 @@ const missing_elements = {
   missing1: "cypress/fixtures/missing_elements1399.json",
   missing2: "cypress/fixtures/missing_elements1400.json"
 };
+
 describe("Fetching data from API and storing it in batch wise and checking elements in all detail pages", () => {
   beforeEach(() => {
     cy.viewport(1920, 1080);

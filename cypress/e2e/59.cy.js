@@ -7,10 +7,11 @@ const filePaths = {
 };
 
 const missing_elements = {
-  missing1: "cypress/fixtures/missing_elements1318.json",
+  missing1: "cypress/fixtures/missing_elements1319.json",
   missing2: "cypress/fixtures/missing_elements1320.json"
 };
-describe("Fetching data from API and storing it in batch wise and checking elements in all detail pages", () => {
+
+describe("Batch 1", () => {
   beforeEach(() => {
     cy.viewport(1920, 1080);
     cy.visit("https://boldersciencestage.pixacore.com/");
@@ -19,7 +20,6 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
     //Click on Login
     cy.get("#wp-submit").click();
   });
-
 
   it("visit nct ID data", () => {
     const selectors = [
@@ -97,7 +97,7 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
   });
 });
 
-describe("Fetching data from API and storing it in batch wise and checking elements in all detail pages", () => {
+describe("Batch 2", () => {
   beforeEach(() => {
     cy.viewport(1920, 1080);
     cy.visit("https://boldersciencestage.pixacore.com/");
@@ -182,4 +182,3 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
     });
   });
 });
-

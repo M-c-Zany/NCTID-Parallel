@@ -3,15 +3,15 @@ const filePath = "cypress/fixtures/mysql.json";
 let res;
 const filePaths = {
   dataFile1: "mysql.json_1203.json",
-  dataFile2: "mysql.json_1204.json",
+  dataFile2: "mysql.json_1204.json"
 };
 
 const missing_elements = {
-  missing1: "cypress/fixtures/missing_elements1003.json",
-  missing2: "cypress/fixtures/missing_elements1004.json",
+  missing1: "cypress/fixtures/missing_elements1203.json",
+  missing2: "cypress/fixtures/missing_elements1204.json"
 };
 
-describe("Fetching data from API and storing it in batch wise and checking elements in all detail pages", () => {
+describe("Batch 1", () => {
   beforeEach(() => {
     cy.viewport(1920, 1080);
     cy.visit("https://boldersciencestage.pixacore.com/");
@@ -20,7 +20,6 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
     //Click on Login
     cy.get("#wp-submit").click();
   });
-
 
   it("visit nct ID data", () => {
     const selectors = [
@@ -98,7 +97,7 @@ describe("Fetching data from API and storing it in batch wise and checking eleme
   });
 });
 
-describe("Fetching data from API and storing it in batch wise and checking elements in all detail pages", () => {
+describe("Batch 2", () => {
   beforeEach(() => {
     cy.viewport(1920, 1080);
     cy.visit("https://boldersciencestage.pixacore.com/");
