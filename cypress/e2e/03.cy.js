@@ -21,6 +21,8 @@ describe("Batch 1", () => {
     cy.get("#wp-submit").click();
   });
 
+
+  
   it("visit nct ID data", () => {
     const selectors = [
       { selector: "#studyDet-eligibility-criteria > .list-unstyled > :nth-child(1) > span", name: "Age", },
