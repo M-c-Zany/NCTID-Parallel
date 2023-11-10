@@ -2,13 +2,13 @@ Cypress.config("taskTimeout", 9000000);
 const filePath = "cypress/fixtures/mysql.json";
 let res;
 const filePaths = {
-  dataFile1: "mysql.json_1407.json",
-  dataFile2: "mysql.json_1408.json"
+  dataFile1: "mysql.json_1607.json",
+  dataFile2: "mysql.json_1608.json"
 };
 
 const missing_elements = {
-  missing1: "cypress/fixtures/missing_elements1407.json",
-  missing2: "cypress/fixtures/missing_elements1408.json"
+  missing1: "cypress/fixtures/missing_elements1607.json",
+  missing2: "cypress/fixtures/missing_elements1608.json"
 };
 
 describe("Batch 1", () => {
@@ -22,7 +22,8 @@ describe("Batch 1", () => {
   });
 
 
-  
+
+
   it("visit nct ID data", () => {
     const selectors = [
       { selector: "#studyDet-eligibility-criteria > .list-unstyled > :nth-child(1) > span", name: "Age", },
