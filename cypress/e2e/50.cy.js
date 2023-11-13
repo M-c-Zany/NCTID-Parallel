@@ -2,18 +2,18 @@ Cypress.config("taskTimeout", 9000000);
 const filePath = "cypress/fixtures/mysql.json";
 let res;
 const filePaths = {
-  dataFile1: "mysql.json_1901.json",
-  dataFile2: "mysql.json_1902.json"
+  dataFile1: "mysql.json_2101.json",
+  dataFile2: "mysql.json_2102.json"
 };
 
 const missing_elements = {
-  missing1: "cypress/fixtures/missing_elements1901.json",
-  missing2: "cypress/fixtures/missing_elements1902.json"
+  missing1: "cypress/fixtures/missing_elements2101.json",
+  missing2: "cypress/fixtures/missing_elements2102.json"
 };
 
 describe("Batch 1", () => {
   beforeEach(() => {
-    cy.viewport(1920, 1080);
+    
     cy.visit("https://boldersciencestage.pixacore.com/");
     //Enter password
     cy.get("#password_protected_pass").type("BolderSc!ence");
@@ -99,7 +99,7 @@ describe("Batch 1", () => {
 
 describe("Batch 2", () => {
   beforeEach(() => {
-    cy.viewport(1920, 1080);
+    
     cy.visit("https://boldersciencestage.pixacore.com/");
     //Enter password
     cy.get("#password_protected_pass").type("BolderSc!ence");

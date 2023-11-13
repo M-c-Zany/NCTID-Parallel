@@ -2,13 +2,13 @@ Cypress.config("taskTimeout", 9000000);
 const filePath = "cypress/fixtures/mysql.json";
 let res;
 const filePaths = {
-  dataFile1: "mysql.json_1977.json",
-  dataFile2: "mysql.json_1978.json"
+  dataFile1: "mysql.json_2177.json",
+  dataFile2: "mysql.json_2178.json"
 };
 
 const missing_elements = {
-  missing1: "cypress/fixtures/missing_elements1977.json",
-  missing2: "cypress/fixtures/missing_elements1978.json"
+  missing1: "cypress/fixtures/missing_elements2177.json",
+  missing2: "cypress/fixtures/missing_elements2178.json"
 };
 
 describe("Fetching data from API and storing it in batch wise and checking elements in all detail pages", () => {
