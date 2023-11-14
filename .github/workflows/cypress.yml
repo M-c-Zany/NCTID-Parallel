@@ -129,7 +129,7 @@ jobs:
           npx cypress install # This ensures Cypress is installed and up-to-date
           # Wrap the Cypress run command in a try-catch block
           set +e
-          npx cypress run --spec "cypress/e2e/${{ matrix.spec_file }}" --config video=false --record --key fede15fc-970a-4cb4-a077-520573466e27
+          npx cypress run --spec "cypress/e2e/${{ matrix.spec_file }}" --config video=false --record --key fede15fc-970a-4cb4-a077-518573466e27
           # Store the exit code in a variable
           EXIT_CODE=$?
           # Set back to normal behavior (exit on error)
