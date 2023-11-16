@@ -2,13 +2,13 @@ Cypress.config("taskTimeout", 9000000);
 const filePath = "cypress/fixtures/mysql.json";
 let res;
 const filePaths = {
-  dataFile1: "mysql.json_2729.json",
-  dataFile2: "mysql.json_2730.json"
+  dataFile1: "mysql.json_3129.json",
+  dataFile2: "mysql.json_3130.json"
 };
 
 const missing_elements = {
-  missing1: "cypress/fixtures/missing_elements2729.json",
-  missing2: "cypress/fixtures/missing_elements2730.json"
+  missing1: "cypress/fixtures/missing_elements3129.json",
+  missing2: "cypress/fixtures/missing_elements3130.json"
 };
 
 describe("Batch 1", () => {
