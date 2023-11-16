@@ -86,35 +86,7 @@ jobs:
          - "72.cy.js"
          - "73.cy.js"
          - "74.cy.js"
-         - "75.cy.js"
-         - "76.cy.js"
-         - "77.cy.js"
-         - "78.cy.js"
-         - "79.cy.js"
-         - "80.cy.js"
-         - "81.cy.js"
-         - "82.cy.js"
-         - "83.cy.js"
-         - "84.cy.js"
-         - "85.cy.js"
-         - "86.cy.js"
-         - "87.cy.js"
-         - "88.cy.js"
-         - "89.cy.js"
-         - "90.cy.js"
-         - "91.cy.js"
-         - "92.cy.js"
-         - "93.cy.js"
-         - "94.cy.js"
-         - "95.cy.js"
-         - "96.cy.js"
-         - "97.cy.js"
-         - "98.cy.js"
-         - "99.cy.js"
-         - "100.cy.js"
              
-
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
