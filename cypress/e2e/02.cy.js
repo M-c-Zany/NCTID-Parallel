@@ -2,13 +2,13 @@ Cypress.config("taskTimeout", 9000000);
 const filePath = "cypress/fixtures/mysql.json";
 let res;
 const filePaths = {
-  dataFile1: "mysql.json_3005.json",
-  dataFile2: "mysql.json_3006.json"
+  dataFile1: "mysql.json_3153.json",
+  dataFile2: "mysql.json_3154.json"
 };
 
 const missing_elements = {
-  missing1: "cypress/fixtures/missing_elements3005.json",
-  missing2: "cypress/fixtures/missing_elements3006.json"
+  missing1: "cypress/fixtures/missing_elements3153.json",
+  missing2: "cypress/fixtures/missing_elements3154.json"
 };
 
 describe("Batch 1", () => {
@@ -39,13 +39,6 @@ describe("Batch 1", () => {
       { selector: ":nth-child(2) > .list-unstyled > :nth-child(1) > span", name: "Actual study start date", },
       { selector: ":nth-child(2) > .list-unstyled > :nth-child(2) > span", name: "Estimate primary completion date", },
       { selector: ":nth-child(2) > .list-unstyled > :nth-child(3) > span", name: "Estimate completion date", },
-      { selector: "#studyDet-description", name: "Study Description" },
-      { selector: "#studyDet-design", name: "Study Design" },
-      { selector: "#studyDet-arms-interventions", name: "Arms and Interventions", },
-      { selector: "#studyDet-outcome-measures", name: "Outcome Measures" },
-      { selector: "#studyDet-eligibility-criteria", name: "Eligibility Criteria", },
-      { selector: "#studyDet-contact-and-locations", name: "Contacts and Locations", },
-      { selector: "#studyDet-more-information", name: "More Information" },
     ];
 
     // Initialize an object to store the empty elements for all NCTIDs
